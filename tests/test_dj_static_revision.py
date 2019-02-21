@@ -1,5 +1,11 @@
+import os
 import shutil
 from pathlib import Path
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tests.django_settings')
+
+import django
+django.setup()
 
 from dulwich.repo import Repo
 from dulwich.errors import NotGitRepository
@@ -40,7 +46,7 @@ class TestGetSourceRevision:
             rp.stage(FILE_NAME_TEST.encode())
             version = rp.do_commit(b'Test commit').decode()
         v = get_source_revision()
-        assert v == version[:7]
+        assert v == version[:10]
 
     def teardown(self):
         folder = Path.cwd()

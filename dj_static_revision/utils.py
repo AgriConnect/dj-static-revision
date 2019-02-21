@@ -2,10 +2,11 @@ import logging
 from pathlib import Path
 
 from dulwich.repo import Repo
+from django.conf import settings
 
 
-FILE_NAME_REVISION = '.version'
-REVISION_LENGTH = 7
+FILE_NAME_REVISION = getattr(settings, 'STATIC_REVISION_VERSION_FILE', '.version')
+REVISION_LENGTH = getattr(settings, 'STATIC_REVISION_STRING_LENGTH', 10)
 logger = logging.getLogger(__name__)
 
 

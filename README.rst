@@ -43,4 +43,20 @@ A variable ``REVISION`` will then exists in your template, you can use it to app
 
 
 `Django Static Revision` retrieves revision string from Git history.
-If your source code is not managed by Git, the revision info will be read from a file  named `.version` placed next to `manage.py` file.
+If your source code is not managed by Git, the revision info will be read from a file named `.version` placed next to `manage.py` file.
+
+
+Settings
+--------
+
+The revision string will be truncated to 10 characters. You can change that by add to Django settings:
+
+.. code-block:: python
+
+    STATIC_REVISION_STRING_LENGTH = 10
+
+You can also change the file for `Django Static Revision` to read revision string from, by add this setting:
+
+.. code-block:: python
+
+    STATIC_REVISION_VERSION_FILE = '.version'

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dj-static-revision"
-version = "0.1.3"
+version = "0.1.4"
 description = "Revision info for Django static file"
 authors = ["Nguyễn Hồng Quân <ng.hong.quan@gmail.com>"]
 license = "Apache-2.0"
@@ -15,13 +15,15 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.4"
+python = "^3.5"
 dulwich = "^0.19.11"
+Django = "^2.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
 pytest-pycodestyle = "^1.4"
 pytest-flakes = "^4.0"
+pytest-django = "^3.4"
 
 [build-system]
 requires = ["poetry>=0.12"]
