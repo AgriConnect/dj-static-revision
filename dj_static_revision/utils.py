@@ -5,7 +5,8 @@ from dulwich.repo import Repo
 from django.conf import settings
 
 
-FILE_NAME_REVISION = getattr(settings, 'STATIC_REVISION_VERSION_FILE', '.version')
+FILE_NAME_REVISION = getattr(settings, 'STATIC_REVISION_VERSION_FILE',
+                             '.version')
 REVISION_LENGTH = getattr(settings, 'STATIC_REVISION_STRING_LENGTH', 10)
 logger = logging.getLogger(__name__)
 
@@ -15,6 +16,7 @@ def locate_django_manage():
     Locate project's manage.py file
     '''
     folder = Path.cwd()
+    print(folder)
     # Look for manage.py in current folder or up
     for i in range(5):
         p = folder / 'manage.py'
@@ -31,7 +33,11 @@ def get_source_revision_from_git(folder):
     repo = Repo(folder)
     # We truncate the hash string to 7 characters,
     # that is also the way Git represents in short form.
-    return repo.head()[:REVISION_LENGTH].decode()
+    try:
+        return repo.head()[:REVISION_LENGTH].decode()
+    except KeyError:
+        # Folder has just been "git init", no data yet
+        return '-'
 
 
 def get_source_revision_from_text_file(folder):

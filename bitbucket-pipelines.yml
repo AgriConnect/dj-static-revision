@@ -1,0 +1,10 @@
+image: docker.pkg.github.com/agriconnect/docker-poetry/poetry:1.0
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - pip
+        script: # Modify the commands below to build your repository.
+          - poetry install --no-root -v
+          - poetry run pytest
