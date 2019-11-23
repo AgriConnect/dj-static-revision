@@ -2,7 +2,6 @@ image:
   name: docker.pkg.github.com/agriconnect/docker-poetry/poetry:1.0
   username: $DOCKER_REGISTRY_USERNAME
   password: $DOCKER_REGISTRY_PASSWORD
-  email: ng.hong.quan@gmail.com
 
 pipelines:
   default:
