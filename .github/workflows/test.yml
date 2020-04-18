@@ -11,7 +11,8 @@ jobs:
       - uses: actions/checkout@master
       - uses: abatilo/actions-poetry@v1.5.0
         with:
-          python_version: 3.7.0
+          python_version: 3.7
+          poetry_version: 1.0.5
           args: install --no-root
       - name: Run pytest
         run: poetry run pytest
