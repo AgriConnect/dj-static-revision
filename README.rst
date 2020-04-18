@@ -2,8 +2,12 @@
 Django Static Revision
 ======================
 
+.. image:: https://madewithlove.now.sh/vn?heart=true&colorA=%23ffcd00&colorB=%23da251d
+.. image:: https://badgen.net/pypi/v/dj-static-revision
+   :target: https://pypi.org/project/dj-static-revision
 
-Provide a context variable to retrieve the version of a Django application.
+
+Django plugin to provide a context variable for retrieving the version of running application.
 
 This variable is meant to change the URL of a static file, to invalidate browser cache.
 
@@ -15,7 +19,7 @@ Install
 
     pip3 install dj-static-revision
 
-`Django Static Revision` only supports Python 3.4+.
+`Django Static Revision` only supports Python 3.6+.
 
 
 Usage
@@ -60,3 +64,5 @@ You can also change the file for `Django Static Revision` to read revision strin
 .. code-block:: python
 
     STATIC_REVISION_VERSION_FILE = '.version'
+
+where *.version* is a text file containing any string you want.

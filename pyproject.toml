@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "dj-static-revision"
-version = "0.2.0"
+version = "0.3"
 description = "Revision info for Django static file"
 authors = ["Nguyễn Hồng Quân <ng.hong.quan@gmail.com>"]
 license = "Apache-2.0"
-repository = "https://bitbucket.org/hongquan/dj-static-revision.git"
-homepage = "https://bitbucket.org/hongquan/dj-static-revision/"
+repository = "https://github.com/AgriConnect/dj-static-revision.git"
+homepage = "https://github.com/AgriConnect/dj-static-revision"
 readme = "README.rst"
 keywords = ["django", "static", "version", "cache"]
 classifiers = [
