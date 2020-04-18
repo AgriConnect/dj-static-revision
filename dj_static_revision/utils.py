@@ -11,23 +11,22 @@ REVISION_LENGTH = getattr(settings, 'STATIC_REVISION_STRING_LENGTH', 10)
 logger = logging.getLogger(__name__)
 
 
-def locate_django_manage():
+def locate_django_manage() -> Path:
     '''
     Locate project's manage.py file
     '''
     folder = Path.cwd()
-    print(folder)
     # Look for manage.py in current folder or up
     for i in range(5):
-        p = folder / 'manage.py'
+        p: Path = folder / 'manage.py'
         if p.exists():
             return folder
         folder = folder.parent
     raise FileNotFoundError('Django manage.py file not found')
 
 
-def get_source_revision_from_git(folder):
-    dot_git = folder / '.git'
+def get_source_revision_from_git(folder: Path) -> str:
+    dot_git: Path = folder / '.git'
     if not dot_git.is_dir():
         raise OSError('Not a Git working copy')
     repo = Repo(folder)
@@ -40,7 +39,7 @@ def get_source_revision_from_git(folder):
         return '-'
 
 
-def get_source_revision_from_text_file(folder):
+def get_source_revision_from_text_file(folder: Path) -> str:
     path = folder / FILE_NAME_REVISION
     try:
         content = path.read_text().strip()
@@ -50,7 +49,7 @@ def get_source_revision_from_text_file(folder):
     return content[:REVISION_LENGTH]
 
 
-def get_source_revision():
+def get_source_revision() -> str:
     folder = locate_django_manage()
     if (folder / FILE_NAME_REVISION).exists():
         return get_source_revision_from_text_file(folder)
