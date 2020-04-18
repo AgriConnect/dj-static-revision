@@ -7,16 +7,8 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    container: docker.pkg.github.com/agriconnect/docker-poetry/poetry:1.0
     steps:
       - uses: actions/checkout@master
-      - uses: abatilo/actions-poetry@v1.5.0
-        with:
-          python_version: 3.7
-          poetry_version: 1.0.5
-          args: install --no-root
-      - name: Run pytest
-        uses: abatilo/actions-poetry@v1.5.0
-        with:
-          python_version: 3.7
-          poetry_version: 1.0.5
-          args: run pytest
+      - run: poetry install --no-root -v
+      - run: poetry run pytest
