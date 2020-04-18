@@ -1,0 +1,17 @@
+name: Run test
+
+on:
+  push
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: abatilo/actions-poetry@v1.5.0
+        with:
+          python_version: 3.7.0
+          args: install --no-root
+      - name: Run pytest
+        run: poetry run pytest
