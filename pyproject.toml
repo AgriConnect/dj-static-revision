@@ -16,9 +16,8 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.6"
-Django = "^3.0.5"
 dulwich = "^0.19.15"
-single-version = "^1.1"
+single-version = "^1.5.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.10"
