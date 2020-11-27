@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dj-static-revision"
-version = "0.3"
+version = "0.4"
 description = "Revision info for Django static file"
 authors = ["Nguyễn Hồng Quân <ng.hong.quan@gmail.com>"]
 license = "Apache-2.0"
@@ -10,6 +10,9 @@ readme = "README.rst"
 keywords = ["django", "static", "version", "cache"]
 classifiers = [
     "Framework :: Django",
+    "Framework :: Django :: 2.2",
+    "Framework :: Django :: 3.0",
+    "Framework :: Django :: 3.1",
     "Environment :: Web Environment",
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
