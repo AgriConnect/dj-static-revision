@@ -4,7 +4,7 @@ on:
   push
 
 jobs:
-  test:
+  tox_test:
     name: Test
     runs-on: ubuntu-latest
     steps:
@@ -15,7 +15,9 @@ jobs:
       - uses: Gr1N/setup-poetry@v4
         with:
           poetry-version: 1.1.4
-      - uses: fedora-python/tox-github-action
+      - name: Run Tox tests
+        id: test
+        uses: fedora-python/tox-github-action@master
         with:
           tox_env: ${{ matrix.tox_env }}
     strategy:
