@@ -4,22 +4,25 @@ on:
   push
 
 jobs:
-  tox_test:
+  test:
     name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-python@v1
         with:
-          python-version: 3.7
+          python-version: ${{ matrix.python-version }}
       - uses: Gr1N/setup-poetry@v4
         with:
           poetry-version: 1.1.4
-      - name: Run Tox tests
-        id: test
-        uses: fedora-python/tox-github-action@master
-        with:
-          tox_env: ${{ matrix.tox_env }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install tox tox-gh-actions
+      - name: Test with tox
+        run: tox
+        env:
+          PLATFORM: ${{ matrix.platform }}
     strategy:
       matrix:
-        tox_env: [py36, py37, py38]
+        python-version: [3.6, 3.7, 3.8]
