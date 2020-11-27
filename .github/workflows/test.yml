@@ -18,6 +18,6 @@ jobs:
       - uses: fedora-python/tox-github-action
         with:
           tox_env: ${{ matrix.tox_env }}
-      strategy:
-        matrix:
-          tox_env: [py36, py37, py38]
+    strategy:
+      matrix:
+        tox_env: [py36, py37, py38]
