@@ -15,5 +15,9 @@ jobs:
       - uses: Gr1N/setup-poetry@v4
         with:
           poetry-version: 1.1.4
-      - run: poetry install --no-root
-      - run: poetry run pytest
+      - uses: fedora-python/tox-github-action
+        with:
+          tox_env: ${{ matrix.tox_env }}
+      strategy:
+        matrix:
+          tox_env: [py36, py37, py38]
