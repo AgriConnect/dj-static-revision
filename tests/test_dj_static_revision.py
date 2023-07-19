@@ -3,10 +3,10 @@ import shutil
 from pathlib import Path
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
-                      'tests.django_settings')  # NOQA
+                      'tests.django_settings')
 
 import django
-django.setup()   # NOQA
+django.setup()
 
 from dulwich.repo import Repo
 from dulwich.errors import NotGitRepository
@@ -17,7 +17,7 @@ TEST_DATA = 'aabbcc'
 
 
 class TestGetSourceRevision:
-    def setup(self):
+    def setup_method(self):
         self.original_revision = None
 
     def test_normal_from_file(self):
@@ -46,7 +46,7 @@ class TestGetSourceRevision:
         v = get_source_revision()
         assert v == version[:10]
 
-    def teardown(self):
+    def teardown_method(self):
         folder = Path.cwd()
         try:
             (folder / '.version').unlink()
