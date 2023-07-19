@@ -19,7 +19,7 @@ Install
 
     pip3 install dj-static-revision
 
-`Django Static Revision` only supports Python 3.6+.
+`Django Static Revision` only supports Python 3.8+.
 
 
 Usage
