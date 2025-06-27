@@ -40,7 +40,6 @@ build-backend = "flit_core.buildapi"
 [dependency-groups]
 test = [
     "pytest >= 8.3.5",
-    "pytest-django>=4.11.1",
     "pytest-env >= 1.1.5",
 ]
 lint = [
@@ -82,12 +81,14 @@ exclude = [
 
 [tool.pytest.ini_options]
 addopts = "--doctest-modules"
-DJANGO_SETTINGS_MODULE = "tests.django_settings"
 testpaths = ["tests", "dj_static_revision"]
 norecursedirs = ["migrations", "management"]
 markers = [
     "freeze_time(timestamp): freeze time to the given timestamp for the duration of the test.",
 ]
+
+[tool.pytest_env]
+DJANGO_SETTINGS_MODULE = "tests.django_settings"
 
 [tool.tox]
 requires = ["tox>=4.19"]
