@@ -1,41 +1,55 @@
-[tool.poetry]
+[project]
+authors = [
+    {name = "Nguyễn Hồng Quân", email = "ng.hong.quan@gmail.com"},
+]
+license = {text = "Apache-2.0"}
+requires-python = "<4.0,>=3.10"
 name = "dj-static-revision"
-version = "0.7"
 description = "Revision info for Django static file"
-authors = ["Nguyễn Hồng Quân <ng.hong.quan@gmail.com>"]
-license = "Apache-2.0"
-repository = "https://github.com/AgriConnect/dj-static-revision.git"
-homepage = "https://github.com/AgriConnect/dj-static-revision"
 readme = "README.rst"
-keywords = ["django", "static", "version", "cache"]
+keywords = [
+    "django",
+    "static",
+    "version",
+    "cache",
+]
 classifiers = [
     "Framework :: Django",
-    "Framework :: Django :: 3.2",
     "Framework :: Django :: 4.0",
     "Framework :: Django :: 4.1",
     "Framework :: Django :: 4.2",
     "Framework :: Django :: 5.0",
+    "Framework :: Django :: 5.1",
+    "Framework :: Django :: 5.2",
     "Environment :: Web Environment",
-    "Topic :: Software Development :: Libraries :: Python Modules"
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
+dependencies = [
+    "dulwich",
+]
+dynamic = ["version"]
 
-[tool.poetry.dependencies]
-python = "^3.8"
-dulwich = "<0.25"
-single-version = "^1.6.0"
+[project.urls]
+homepage = "https://github.com/AgriConnect/dj-static-revision"
+repository = "https://github.com/AgriConnect/dj-static-revision.git"
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.2.1"
-pytest-env = "^1.1.3"
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
 
-
-[tool.poetry.group.lint.dependencies]
-ruff = "^0.4.5"
+[dependency-groups]
+dev = [
+    "pytest >= 8.3.5",
+    "pytest-env >= 1.1.5",
+]
+lint = [
+    "ruff >= 0.12.1",
+]
 
 [tool.ruff]
 line-length = 120
 
-target-version = "py310"
+target-version = "py312"
 
 exclude = [
     ".bzr",
@@ -64,7 +78,3 @@ exclude = [
 
 [tool.ruff.per-file-ignores]
 "tests/test_dj_static_revision.py" = ["E402"]
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"

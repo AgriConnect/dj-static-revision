@@ -1,6 +1,4 @@
-from pathlib import Path
-
-from single_version import get_version
+'''Django plugin to get version info from the running application, so that we can make versioned URL for static files.'''
 
 
-__version__ = get_version('dj-static-revision', Path(__file__).parent.parent)
+__version__ = '0.8'
